@@ -1,0 +1,49 @@
+doctype html
+html
+    head 
+        meta(charset='utf-8')
+        title Topics
+        h1
+            a(href='/') HomePage
+    body
+        fieldset
+            fieldset
+                p
+                    h1
+                        a(href='/topic') Several Topics
+                p
+                    ul
+                        each topic in topics
+                            li
+                                - var rid = encodeURIComponent(topic['@rid'])
+                                a(href='/topic?rid=' + rid)= topic.title
+            if (rid || update)
+                -var title, desc;
+                fieldset
+                    artcle
+                        p
+                            each topic in topics
+                                -if (topic['@rid'].toString() === rid)
+                                    -title = topic.title
+                                    -desc = topic.description
+                                    h2= topic.title
+                                    = topic.description
+                                    -break
+                                
+                        -var encodedRid = encodeURIComponent(rid);
+                        if (!update)
+                            p
+                                a(href='/topic/update?rid=' + encodedRid) Update
+                            p
+                                a(href='/topic/delete?rid=' + encodedRid) Delete 
+                        else
+                            form(action='/topic/update?rid=' + encodedRid method='post')
+                                p
+                                    input(type='text' name='title' placeholder= title)
+                                p
+                                    textarea(name='description' placeholder= desc)
+                                p
+                                    input(type='submit')
+            fieldset                    
+                h2
+                    a(href='/topic/new') Create New Topic

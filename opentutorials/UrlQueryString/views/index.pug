@@ -1,0 +1,17 @@
+
+-var contents = ['Javascript', 'NodeJs', 'Express'];
+html
+    head
+        title= title
+    body
+        fieldset
+            h1 Hello, Homepage!
+            ul
+                -   for(var i = 0; i < 3; i++)
+                    -   var link = '/content?id=' + i;
+                    -   var sentence = contents[i];
+                        a(href= link) #{sentence}
+                        br 
+            img(src= location)
+            br
+            

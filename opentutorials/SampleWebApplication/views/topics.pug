@@ -1,0 +1,43 @@
+doctype html
+html    
+    head
+        meta(charset="utf-8")
+        title= Topics
+        h1 
+            a(href='/') HomePage
+    body
+        fieldset
+            p
+                h2
+                    a(href="/topic") Server Side JavaScript: TOPIC
+            p
+                ul
+                    each topic in topics
+                        li 
+                            a(href="/topic?title=" + topic)= topic
+                            
+                            
+            p
+                fieldset
+                    h3
+                        a(href="/topic/new") Create New Topics
+              
+            if title
+                if description
+                     p
+                        fieldset
+                            article
+                                h1= title
+                                = description
+            if newTopic
+                fieldset
+                    form(action="/topic" method="post")
+                        p
+                            input(type="text" name="title" placeholder="title")
+                        p
+                            textarea(name="description" placeholder="description")
+                        p
+                            input(type="submit" value="Create")
+
+
+        

@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        meta(charset='utf8')
+        h1 Create New Topic
+    body
+        fieldset
+            form(action='/topic/new' method='post')
+                p
+                    input(type='text' name='title' placeholder='title')
+                p
+                    textarea(name='description' placeholder='description')
+                p
+                    input(type='text' name='auth' placeholder='auth')
+                p
+                    input(type='submit')

@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        meta(charshet='utf8')
+        title sign in
+    body
+        form(action='/signin' method='post')
+            p
+                input(type="text" name='id' placeholder="Id")
+            p
+                input(type="password" name='password' placeholder="Password")
+            p
+                input(type='text' name='name' placeholder='name')
+            p
+                input(type='date' name='birth' min='1900-01-01')
+            p
+                input(type="submit" value='Sign in') 

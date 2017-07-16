@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title Upload File Page
+    body
+        fieldset
+            form(action="upload" method='post' enctype="multipart/form-data")
+
+                p
+                    input(type='text' name="filename")
+                    input(type='file' name="userfile")
+                
+                p
+                    input(type='submit')
+

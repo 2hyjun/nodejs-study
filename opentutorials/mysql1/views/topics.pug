@@ -1,0 +1,49 @@
+doctype html
+html
+    head 
+        meta(charset='utf-8')
+        title Topics
+        h1
+            a(href='/') HomePage
+    body
+        -var contentTopic;
+        fieldset
+            fieldset
+                p
+                    h1
+                        a(href='/topic') Several Topics
+                p
+                    ul
+                        each topic in topics
+                            -if(topic.id === corId) 
+                                -contentTopic = topic
+                            
+                            li
+                                - var id = topic.id;
+                                a(href='/topic?id=' + id)= topic.title
+            if (contentTopic)
+                fieldset
+                    artcle
+                        if (!update)
+                            p
+                                h2= contentTopic.title
+                                = contentTopic.description
+                                h3= contentTopic.author
+                                p
+                                    a(href='/topic/update?id=' + contentTopic.id) Update
+                                p
+                                    a(href='/topic/delete?id=' + contentTopic.id) Delete 
+                        else
+                            form(action="/topic/update?id=" + contentTopic.id method="post")
+                                p
+                                    input(type="text" name='title' value= contentTopic.title)
+                                p
+                                    textarea(name='description')= contentTopic.description
+                                p
+                                    input(type="text" name='author' value= contentTopic.author)
+                                p
+                                    input(type='submit')   
+
+            fieldset                    
+                h2
+                    a(href='/topic/new') Create New Topic
